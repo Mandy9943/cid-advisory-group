@@ -5,8 +5,7 @@ export const CALENDLY_URL =
 export const EMAIL = "info@cidadvisorygroup.com";
 export const PHONE_DISPLAY = "+1 (786) 491-8308";
 export const TIKTOK_URL = "https://www.tiktok.com/@yoan_cid";
-export const INSTAGRAM_URL =
-  "https://www.instagram.com/cid_advisory_group?igsh=MTVhYmg3MHNlZTZoYg==";
+export const INSTAGRAM_URL = "https://www.instagram.com/cid_advisory_group";
 export const COMPANY_NAME = "CID Advisory Group";
 
 export const faqs = [
