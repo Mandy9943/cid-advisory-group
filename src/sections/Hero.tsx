@@ -1,6 +1,6 @@
+import { CALENDLY_URL, WHATSAPP_URL } from "@/lib/constants";
+import { ArrowRight, CheckCircle, MessageCircle } from "lucide-react";
 import Image from "next/image";
-import { ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
-import { WHATSAPP_URL, CALENDLY_URL } from "@/lib/constants";
 
 const benefits = [
   "Consulta gratuita",
@@ -15,7 +15,7 @@ export default function Hero() {
       <div className="absolute inset-0 hero-bg">
         <Image
           src="/hero_professional_laptop.jpg"
-          alt="Profesional trabajando en reparación de crédito en Miami"
+          alt="Profesional trabajando en reparación de crédito"
           fill
           sizes="100vw"
           className="object-cover"

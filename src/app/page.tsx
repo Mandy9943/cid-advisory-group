@@ -26,27 +26,14 @@ const jsonLd = {
       url: SITE_URL,
       logo: `${SITE_URL}/logo.png`,
       description:
-        "Servicios expertos de reparación de crédito y formación de negocios en Miami, FL.",
+        "Servicios expertos de reparación de crédito y formación de negocios.",
       telephone: "+1-786-491-8308",
       email: EMAIL,
-      address: {
-        "@type": "PostalAddress",
-        addressLocality: "Miami",
-        addressRegion: "FL",
-        addressCountry: "US",
-      },
-      areaServed: { "@type": "Country", name: "US" },
       serviceType: [
         "Reparación de Crédito",
         "Formación de LLC",
         "Asesoría Empresarial",
       ],
-      openingHoursSpecification: {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "09:00",
-        closes: "18:00",
-      },
       sameAs: [TIKTOK_URL, INSTAGRAM_URL],
       priceRange: "$$",
     },

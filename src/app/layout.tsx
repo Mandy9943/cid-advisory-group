@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Montserrat, IBM_Plex_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -27,18 +27,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://cidadvisorygroup.com"),
   title: {
     default:
-      "CID Advisory Group | Reparación de Crédito y Formación de Negocios en Miami",
+      "CID Advisory Group | Reparación de Crédito y Formación de Negocios",
     template: "%s | CID Advisory Group",
   },
   description:
-    "Servicios expertos de reparación de crédito y formación de negocios en Miami, FL. Mejora tu puntaje crediticio, forma tu LLC y construye tu futuro financiero con asesoría personalizada. Consulta gratuita.",
+    "Servicios expertos de reparación de crédito y formación de negocios. Mejora tu puntaje crediticio, forma tu LLC y construye tu futuro financiero con asesoría personalizada. Consulta gratuita.",
   keywords: [
     "reparación de crédito",
     "credit repair",
     "formación de negocios",
     "crear LLC",
     "asesoría financiera",
-    "Miami",
     "CID Advisory Group",
     "mejorar puntaje de crédito",
     "formación de empresas",
@@ -53,18 +52,18 @@ export const metadata: Metadata = {
     locale: "es_US",
     url: "/",
     siteName: "CID Advisory Group",
-    title:
-      "CID Advisory Group | Reparación de Crédito y Formación de Negocios",
+    title: "CID Advisory Group | Reparación de Crédito y Formación de Negocios",
     description:
-      "Mejora tu puntaje crediticio, forma tu LLC y construye tu futuro financiero con asesoría personalizada en Miami, FL.",
-    images: [{ url: "/logo.png", width: 512, height: 512, alt: "CID Advisory Group" }],
+      "Mejora tu puntaje crediticio, forma tu LLC y construye tu futuro financiero con asesoría personalizada.",
+    images: [
+      { url: "/logo.png", width: 512, height: 512, alt: "CID Advisory Group" },
+    ],
   },
   twitter: {
     card: "summary",
-    title:
-      "CID Advisory Group | Reparación de Crédito y Formación de Negocios",
+    title: "CID Advisory Group | Reparación de Crédito y Formación de Negocios",
     description:
-      "Mejora tu crédito y lanza tu negocio con asesoría experta en Miami. Consulta gratuita.",
+      "Mejora tu crédito y lanza tu negocio con asesoría experta. Consulta gratuita.",
     images: ["/logo.png"],
   },
 };
