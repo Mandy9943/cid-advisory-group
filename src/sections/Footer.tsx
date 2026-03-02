@@ -1,13 +1,14 @@
-import Image from "next/image";
-import { Mail, MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import {
-  WHATSAPP_URL,
   CALENDLY_URL,
-  TIKTOK_URL,
-  EMAIL,
-  PHONE_DISPLAY,
   COMPANY_NAME,
+  EMAIL,
+  INSTAGRAM_URL,
+  PHONE_DISPLAY,
+  TIKTOK_URL,
+  WHATSAPP_URL,
 } from "@/lib/constants";
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
   servicios: [
@@ -25,8 +26,6 @@ const footerLinks = {
 
 const stats = [
   { value: "5,000+", label: "Clientes Satisfechos" },
-  { value: "98%", label: "Tasa de Éxito" },
-  { value: "15+", label: "Años de Experiencia" },
   { value: "24h", label: "Tiempo de Respuesta" },
 ];
 
@@ -36,7 +35,7 @@ export default function Footer() {
       {/* Stats Banner */}
       <div className="border-b border-[#F6F7F9]/10">
         <div className="px-[6vw] py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-6">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
                 <p className="text-[#B8B9F3] font-black text-3xl md:text-4xl mb-1">
@@ -107,20 +106,6 @@ export default function Footer() {
                     {EMAIL}
                   </span>
                 </a>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#B8B9F3]/20 flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-[#B8B9F3]" />
-                  </div>
-                  <span className="text-[#F6F7F9] text-sm">Miami, FL</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#B8B9F3]/20 flex items-center justify-center">
-                    <Clock className="w-4 h-4 text-[#B8B9F3]" />
-                  </div>
-                  <span className="text-[#F6F7F9] text-sm">
-                    Lun - Vie: 9am - 6pm EST
-                  </span>
-                </div>
               </address>
 
               {/* Social Links */}
@@ -148,6 +133,22 @@ export default function Footer() {
                     aria-hidden="true"
                   >
                     <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.71a8.19 8.19 0 004.76 1.52V6.79a4.85 4.85 0 01-1-.1z" />
+                  </svg>
+                </a>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-10 h-10 rounded-lg bg-[#F6F7F9]/5 flex items-center justify-center hover:bg-[#B8B9F3]/20 transition-colors"
+                >
+                  <svg
+                    className="w-4 h-4 text-[#A9B1C0]"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.93 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
                   </svg>
                 </a>
               </div>

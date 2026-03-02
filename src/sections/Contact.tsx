@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { Phone, Mail, Clock, MapPin, ArrowRight, MessageCircle } from "lucide-react";
 import {
-  WHATSAPP_URL,
   CALENDLY_URL,
   EMAIL,
   PHONE_DISPLAY,
+  WHATSAPP_URL,
 } from "@/lib/constants";
+import { ArrowRight, Mail, MessageCircle, Phone } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,7 +28,7 @@ export default function Contact() {
           obs.unobserve(el);
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -37,13 +37,13 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Hola, soy ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}${formData.phone ? `\nTeléfono: ${formData.phone}` : ""}`
+      `Hola, soy ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}${formData.phone ? `\nTeléfono: ${formData.phone}` : ""}`,
     );
     window.open(`${WHATSAPP_URL}?text=${text}`, "_blank");
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -178,28 +178,6 @@ export default function Contact() {
                     </p>
                   </div>
                 </a>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#B8B9F3]/20 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-[#B8B9F3]" />
-                  </div>
-                  <div>
-                    <p className="text-[#A9B1C0] text-sm">Horario</p>
-                    <p className="text-[#F6F7F9] font-medium">
-                      Lun - Vie: 9am - 6pm
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-[#B8B9F3]/20 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-[#B8B9F3]" />
-                  </div>
-                  <div>
-                    <p className="text-[#A9B1C0] text-sm">Ubicación</p>
-                    <p className="text-[#F6F7F9] font-medium">Miami, FL</p>
-                  </div>
-                </div>
               </address>
             </div>
 

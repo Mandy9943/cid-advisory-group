@@ -1,20 +1,21 @@
-import Navigation from "@/sections/Navigation";
-import Hero from "@/sections/Hero";
-import CreditServices from "@/sections/CreditServices";
-import BusinessServices from "@/sections/BusinessServices";
-import Process from "@/sections/Process";
-import Philosophy from "@/sections/Philosophy";
-import Testimonials from "@/sections/Testimonials";
-import FAQ from "@/sections/FAQ";
-import Contact from "@/sections/Contact";
-import Footer from "@/sections/Footer";
 import {
-  faqs,
-  SITE_URL,
   COMPANY_NAME,
   EMAIL,
+  faqs,
+  INSTAGRAM_URL,
+  SITE_URL,
   TIKTOK_URL,
 } from "@/lib/constants";
+import BusinessServices from "@/sections/BusinessServices";
+import Contact from "@/sections/Contact";
+import CreditServices from "@/sections/CreditServices";
+import FAQ from "@/sections/FAQ";
+import Footer from "@/sections/Footer";
+import Hero from "@/sections/Hero";
+import Navigation from "@/sections/Navigation";
+import Philosophy from "@/sections/Philosophy";
+import Process from "@/sections/Process";
+import Testimonials from "@/sections/Testimonials";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -42,17 +43,11 @@ const jsonLd = {
       ],
       openingHoursSpecification: {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-        ],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         opens: "09:00",
         closes: "18:00",
       },
-      sameAs: [TIKTOK_URL],
+      sameAs: [TIKTOK_URL, INSTAGRAM_URL],
       priceRange: "$$",
     },
     {
