@@ -1,56 +1,50 @@
 "use client";
 
-import { useRef, useLayoutEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import { Phone, Mail, Clock, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
-
-const WHATSAPP_URL = 'https://wa.me/17864918308';
-const CALENDLY_URL = 'https://calendly.com/cidadvisorygroup-info/nueva-reunion';
+import { useRef, useEffect, useState } from "react";
+import { Phone, Mail, Clock, MapPin, ArrowRight, MessageCircle } from "lucide-react";
+import {
+  WHATSAPP_URL,
+  CALENDLY_URL,
+  EMAIL,
+  PHONE_DISPLAY,
+} from "@/lib/constants";
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
-  const formPanelRef = useRef<HTMLDivElement>(null);
-  const detailsRef = useRef<HTMLDivElement>(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
-  useLayoutEffect(() => {
-    const section = sectionRef.current;
-    const formPanel = formPanelRef.current;
-    const details = detailsRef.current;
-
-    if (!section || !formPanel || !details) return;
-
-    const ctx = gsap.context(() => {
-      // Form panel animation
-      gsap.fromTo(formPanel,
-        { x: '-6vw', opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6 }
-      );
-
-      // Details animation
-      gsap.fromTo(details,
-        { x: '6vw', opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.6 }
-      );
-    }, section);
-
-    return () => ctx.revert();
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          el.classList.add("in-view");
+          obs.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Hola, soy ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}${formData.phone ? `\nTeléfono: ${formData.phone}` : ''}`
+      `Hola, soy ${formData.name}.\n\n${formData.message}\n\nEmail: ${formData.email}${formData.phone ? `\nTeléfono: ${formData.phone}` : ""}`
     );
-    window.open(`${WHATSAPP_URL}?text=${text}`, '_blank');
+    window.open(`${WHATSAPP_URL}?text=${text}`, "_blank");
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -58,16 +52,12 @@ export default function Contact() {
     <section
       ref={sectionRef}
       className="relative w-full py-[8vh] px-[6vw]"
-      style={{ background: '#0B0F17' }}
+      style={{ background: "#0B0F17" }}
     >
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Form Panel */}
-          <div
-            ref={formPanelRef}
-            className="glass-light panel-radius p-6 md:p-8"
-            style={{ opacity: 0 }}
-          >
+          <div className="glass-light panel-radius p-6 md:p-8 anim-fade-left">
             <span className="font-mono-label text-[#4A5568] block mb-3">
               CONTACTO
             </span>
@@ -75,7 +65,8 @@ export default function Contact() {
               Hablemos
             </h2>
             <p className="text-[#4A5568] text-[clamp(14px,1.1vw,17px)] mb-6">
-              Cuéntanos tu situación. Al enviar, se abrirá WhatsApp con tu mensaje.
+              Cuéntanos tu situación. Al enviar, se abrirá WhatsApp con tu
+              mensaje.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -149,34 +140,42 @@ export default function Contact() {
           </div>
 
           {/* Right Details */}
-          <div
-            ref={detailsRef}
-            className="space-y-6"
-            style={{ opacity: 0 }}
-          >
+          <div className="space-y-6 anim-fade-right">
             <div className="glass-dark panel-radius p-6">
               <h3 className="text-[#F6F7F9] font-bold text-lg mb-4">
                 Información de Contacto
               </h3>
 
-              <div className="space-y-4">
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 group">
+              <address className="space-y-4 not-italic">
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 group"
+                >
                   <div className="w-10 h-10 rounded-lg bg-[#B8B9F3]/20 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-5 h-5 text-[#B8B9F3]" />
                   </div>
                   <div>
                     <p className="text-[#A9B1C0] text-sm">WhatsApp</p>
-                    <p className="text-[#F6F7F9] font-medium group-hover:text-[#B8B9F3] transition-colors">+1 (786) 491-8308</p>
+                    <p className="text-[#F6F7F9] font-medium group-hover:text-[#B8B9F3] transition-colors">
+                      {PHONE_DISPLAY}
+                    </p>
                   </div>
                 </a>
 
-                <a href="mailto:info@cidadvisorygroup.com" className="flex items-start gap-3 group">
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="flex items-start gap-3 group"
+                >
                   <div className="w-10 h-10 rounded-lg bg-[#B8B9F3]/20 flex items-center justify-center flex-shrink-0">
                     <Mail className="w-5 h-5 text-[#B8B9F3]" />
                   </div>
                   <div>
                     <p className="text-[#A9B1C0] text-sm">Correo</p>
-                    <p className="text-[#F6F7F9] font-medium group-hover:text-[#B8B9F3] transition-colors">info@cidadvisorygroup.com</p>
+                    <p className="text-[#F6F7F9] font-medium group-hover:text-[#B8B9F3] transition-colors">
+                      {EMAIL}
+                    </p>
                   </div>
                 </a>
 
@@ -186,7 +185,9 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-[#A9B1C0] text-sm">Horario</p>
-                    <p className="text-[#F6F7F9] font-medium">Lun - Vie: 9am - 6pm</p>
+                    <p className="text-[#F6F7F9] font-medium">
+                      Lun - Vie: 9am - 6pm
+                    </p>
                   </div>
                 </div>
 
@@ -199,7 +200,7 @@ export default function Contact() {
                     <p className="text-[#F6F7F9] font-medium">Miami, FL</p>
                   </div>
                 </div>
-              </div>
+              </address>
             </div>
 
             <div className="glass-dark panel-radius p-6">
@@ -207,7 +208,8 @@ export default function Contact() {
                 Agenda una consulta gratuita
               </h3>
               <p className="text-[#A9B1C0] text-sm mb-4">
-                Reserva un espacio en nuestro calendario y hablemos sobre tu situación.
+                Reserva un espacio en nuestro calendario y hablemos sobre tu
+                situación.
               </p>
               <a
                 href={CALENDLY_URL}

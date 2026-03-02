@@ -117,6 +117,76 @@
   }
 }
 
+/* ── Hero entrance animations (above fold, play on load) ── */
+
+@keyframes fadeScaleIn {
+  from { opacity: 0; transform: scale(1.1); }
+}
+
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-12vw); }
+}
+
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(12vw); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+}
+
+.hero-bg   { animation: fadeScaleIn  1.2s cubic-bezier(0.16,1,0.3,1) both; }
+.hero-text { animation: slideFromLeft 0.9s cubic-bezier(0.16,1,0.3,1) 0.5s both; }
+.hero-card { animation: slideFromRight 0.8s cubic-bezier(0.16,1,0.3,1) 0.6s both; }
+
+.hero-word {
+  animation: slideUp 0.6s cubic-bezier(0.16,1,0.3,1) both;
+  animation-delay: calc(0.7s + var(--i, 0) * 50ms);
+}
+
+/* ── Scroll-triggered entrance animations (below fold) ── */
+
+.anim-fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.anim-fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.anim-fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+.in-view .anim-fade-up,
+.in-view .anim-fade-left,
+.in-view .anim-fade-right {
+  opacity: 1;
+  transform: translate(0);
+}
+
+.anim-stagger {
+  transition-delay: calc(var(--i, 0) * 100ms + 200ms);
+}
+
+/* ── Accessibility: respect reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg, .hero-text, .hero-card, .hero-word,
+  .anim-fade-up, .anim-fade-left, .anim-fade-right {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

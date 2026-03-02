@@ -1,5 +1,3 @@
-"use client";
-
 import Navigation from "@/sections/Navigation";
 import Hero from "@/sections/Hero";
 import CreditServices from "@/sections/CreditServices";
@@ -10,41 +8,99 @@ import Testimonials from "@/sections/Testimonials";
 import FAQ from "@/sections/FAQ";
 import Contact from "@/sections/Contact";
 import Footer from "@/sections/Footer";
+import {
+  faqs,
+  SITE_URL,
+  COMPANY_NAME,
+  EMAIL,
+  TIKTOK_URL,
+} from "@/lib/constants";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FinancialService",
+      name: COMPANY_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}/logo.png`,
+      description:
+        "Servicios expertos de reparación de crédito y formación de negocios en Miami, FL.",
+      telephone: "+1-786-491-8308",
+      email: EMAIL,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Miami",
+        addressRegion: "FL",
+        addressCountry: "US",
+      },
+      areaServed: { "@type": "Country", name: "US" },
+      serviceType: [
+        "Reparación de Crédito",
+        "Formación de LLC",
+        "Asesoría Empresarial",
+      ],
+      openingHoursSpecification: {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "09:00",
+        closes: "18:00",
+      },
+      sameAs: [TIKTOK_URL],
+      priceRange: "$$",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
+  ],
+};
 
 export default function Home() {
   return (
-    <div className="relative">
-      {/* Noise Overlay */}
-      <div className="noise-overlay" />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
-      {/* Navigation */}
-      <Navigation />
+      <div className="relative">
+        <div className="noise-overlay" />
+        <Navigation />
 
-      {/* Main Content */}
-      <main className="relative">
-        {/* Pinned Sections */}
-        <Hero />
-        <div id="servicios">
-          <CreditServices />
-        </div>
-        <BusinessServices />
-        <div id="proceso">
-          <Process />
-        </div>
-        <Philosophy />
+        <main className="relative">
+          <Hero />
+          <div id="servicios">
+            <CreditServices />
+          </div>
+          <BusinessServices />
+          <div id="proceso">
+            <Process />
+          </div>
+          <Philosophy />
 
-        {/* Flowing Sections */}
-        <div id="testimonios">
-          <Testimonials />
-        </div>
-        <div id="faq">
-          <FAQ />
-        </div>
-        <div id="contacto">
-          <Contact />
-        </div>
-        <Footer />
-      </main>
-    </div>
+          <div id="testimonios">
+            <Testimonials />
+          </div>
+          <div id="faq">
+            <FAQ />
+          </div>
+          <div id="contacto">
+            <Contact />
+          </div>
+          <Footer />
+        </main>
+      </div>
+    </>
   );
 }
