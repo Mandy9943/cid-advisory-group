@@ -1,12 +1,11 @@
-import Image from "next/image";
-import { Building2, Landmark, Globe, Cpu, Rocket } from "lucide-react";
 import AnimateOnView from "@/components/AnimateOnView";
+import { Building2, Globe, Landmark, Rocket } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   { icon: Building2, text: "Formación de LLC / Corp" },
   { icon: Landmark, text: "Configuración bancaria y marca" },
   { icon: Globe, text: "Presencia digital y sitio web" },
-  { icon: Cpu, text: "Automatización y herramientas" },
 ];
 
 export default function BusinessServices() {
