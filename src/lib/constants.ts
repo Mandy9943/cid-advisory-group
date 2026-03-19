@@ -1,4 +1,4 @@
-export const SITE_URL = "https://cidadvisorygroup.com";
+export const SITE_URL = "https://www.cidadvisorygroup.com";
 export const WHATSAPP_URL = "https://wa.me/+17864919308";
 export const CALENDLY_URL =
   "https://calendly.com/cidadvisorygroup-info/nueva-reunion";
