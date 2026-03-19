@@ -1,9 +1,9 @@
 export const SITE_URL = "https://cidadvisorygroup.com";
-export const WHATSAPP_URL = "https://wa.me/17864918308";
+export const WHATSAPP_URL = "https://wa.me/+17864919308";
 export const CALENDLY_URL =
   "https://calendly.com/cidadvisorygroup-info/nueva-reunion";
 export const EMAIL = "info@cidadvisorygroup.com";
-export const PHONE_DISPLAY = "+1 (786) 491-8308";
+export const PHONE_DISPLAY = "+1 (786) 491-9308";
 export const TIKTOK_URL = "https://www.tiktok.com/@yoan_cid";
 export const INSTAGRAM_URL = "https://www.instagram.com/cid_advisory_group";
 export const COMPANY_NAME = "CID Advisory Group";
